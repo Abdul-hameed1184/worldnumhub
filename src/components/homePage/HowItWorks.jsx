@@ -7,22 +7,22 @@ import {
 
 const features = [
   {
-    icon: <ShoppingBag size={28} className="text-purple-600" />,
+    icon: <ShoppingBag size={28} className="text-amber-600" />,
     title: "Select Services",
     description: "Select the service for which you need a number.",
   },
   {
-    icon: <ClipboardCheck size={28} className="text-purple-600" />,
+    icon: <ClipboardCheck size={28} className="text-amber-600" />,
     title: "Place Your Order",
     description: "We’ll instantly assign you a number for signup.",
   },
   {
-    icon: <Smartphone size={28} className="text-purple-600" />,
+    icon: <Smartphone size={28} className="text-amber-600" />,
     title: "Get the OTP",
     description: "Receive the OTP to complete your verification process.",
   },
   {
-    icon: <Wallet size={28} className="text-purple-600" />,
+    icon: <Wallet size={28} className="text-amber-600" />,
     title: "Easy to Recharge",
     description: "We support easy crypto payments for fast recharge.",
   },

@@ -5,16 +5,16 @@ const TypingEffect = () => {
     <div className="text-center">
       <TypeAnimation
         sequence={[
-          'Welcome to basedsms...',
+          'Welcome to WorldNumHub...',
           2000,
-          ' Your number one virtual number provider',
+          'GLOBAL NUMBERS, GLOBAL PRESENCE',
           2000,
         ]}
         wrapper="p"
         speed={50}
         repeat={Infinity}
-        style={{ color: '#FF6908', textAlign:'start' }}
-        className='font-bold text-[1.6rem] md:text-2xl mb-4 '
+        style={{ color: '#e6ac00', textAlign:'start' }}
+        className='font-bold text-[1rem] md:text-2xl mb-4 md:items-center'
       />
     </div>
   );
