@@ -9,7 +9,7 @@ const Hero = () => {
     <section className="bg-[#f7f7f7] py-20 px-4 pt-45">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-10">
         {/* Left content */}
-        <div className="w-full  text-center md:text-left ml-16">
+        <div className="w-full text-center md:text-left">
           {/* <h1 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-3">
             <span className="text-orange-500">
               Your number one virtual number provider
