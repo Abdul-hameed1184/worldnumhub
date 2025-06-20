@@ -6,7 +6,7 @@ const CallToAction = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white text-center py-20 px-4">
+    <section className="bg-gradient-to-r  from-amber-800 to-amber-600 text-white text-center py-20 px-4">
       <div className="max-w-4xl mx-auto flex flex-col items-center space-y-6">
         <p className="font-bold text-2xl md:text-3xl">
           Start Using Our Service

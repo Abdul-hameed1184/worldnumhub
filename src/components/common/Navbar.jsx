@@ -10,14 +10,14 @@ import { Link } from 'react-router-dom';
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src="/logo192.png" alt="Logo" className="h-10" />
+          <img src="/logo.png" alt="Logo" className="h-7" />
         </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           <Link to={'/sign-in'} className="text-sm text-gray-800 font-medium">Login</Link>
           <Link to={'/sign-up'} className="text-sm text-gray-800 font-medium">Signup</Link>
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-sm font-medium text-white px-4 py-2 rounded-full flex items-center gap-1 transition-colors">
+          <button className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-4 py-2 rounded-full flex items-center gap-1 transition-colors">
             📞 Contact Us
           </button>
         </nav>
@@ -40,7 +40,7 @@ import { Link } from 'react-router-dom';
         <div className="flex flex-col items-center gap-4 bg-white">
           <Link to={'/sign-up'} className="text-sm text-gray-800 font-medium">Login</Link>
           <Link to={'/sign-in'} className="text-sm text-gray-800 font-medium">Signup</Link>
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-sm font-medium text-white px-4 py-2 rounded-full flex items-center gap-1 transition-colors">
+          <button className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-4 py-2 rounded-full flex items-center gap-1 transition-colors">
             📞 Contact Us
           </button>
         </div>

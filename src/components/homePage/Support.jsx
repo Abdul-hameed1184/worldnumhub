@@ -7,7 +7,7 @@ const Support = () => {
         {/* Text Section */}
         <div className="flex-1 text-center lg:text-left space-y-6">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-            We provide 24X7 Customer Support
+            We provide 24/7 Customer Support
           </h1>
           <p className="text-gray-600 text-base md:text-lg">
             Our highly trained customer support executives are always ready to solve your every problem and answer all your queries. Feel free to contact us anytime.
@@ -17,9 +17,9 @@ const Support = () => {
         {/* Image Section */}
         <div className="flex-1 flex justify-center">
           <img
-            src="support.jpg"
+            src="support.png"
             alt="Customer support"
-            className="rounded-full w-64 h-64 md:w-150 md:h-150 object-cover"
+            className="rounded-full w-48 h-48 md:w-150 md:h-150 object-cover"
           />
         </div>
       </div>
