@@ -24,13 +24,13 @@ const Hero = () => {
 
           <div className="flex flex-row sm:justify-start justify-center gap-4 mt-6">
             <button
-              className="bg-amber-400 hover:bg-amber-500 text-sm font-medium text-white px-6 py-2 rounded-full flex items-center transition-colors gap-3"
+              className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-6 py-2 rounded-full flex items-center transition-colors gap-3"
               onClick={() => navigate("/sign-in")}
             >
               <LogIn /> Login
             </button>
             <button
-              className="bg-amber-400 hover:bg-amber-500 text-sm font-medium text-white px-6 py-2 rounded-full flex items-center transition-colors gap-3"
+              className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-6 py-2 rounded-full flex items-center transition-colors gap-3"
               onClick={() => navigate("/sign-up")}
             >
               <LogOut /> Signup

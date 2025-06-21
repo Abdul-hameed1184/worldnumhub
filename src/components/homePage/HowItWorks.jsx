@@ -8,23 +8,23 @@ import {
 const features = [
   {
     icon: <ShoppingBag size={28} className="text-amber-600" />,
-    title: "Select Services",
-    description: "Select the service for which you need a number.",
+    title: "Search Numbers",
+    description: "Choose country, type (mobile, landline, toll-free).",
   },
   {
     icon: <ClipboardCheck size={28} className="text-amber-600" />,
-    title: "Place Your Order",
-    description: "We’ll instantly assign you a number for signup.",
+    title: "Make Payment",
+    description: "Secure checkout with preferred payment gateway.",
   },
   {
     icon: <Smartphone size={28} className="text-amber-600" />,
-    title: "Get the OTP",
-    description: "Receive the OTP to complete your verification process.",
+    title: "Get Your Number",
+    description: "Instantly activated and ready for use.",
   },
   {
     icon: <Wallet size={28} className="text-amber-600" />,
-    title: "Easy to Recharge",
-    description: "We support easy crypto payments for fast recharge.",
+    title: "Manage Dashboard",
+    description: "View, renew, or integrate with third-party tools.",
   },
 ];
 

@@ -10,11 +10,11 @@ const TypingEffect = () => {
           'GLOBAL NUMBERS, GLOBAL PRESENCE',
           2000,
         ]}
-        wrapper="p"
+        wrapper="h1"
         speed={50}
         repeat={Infinity}
         style={{ color: '#e6ac00', textAlign:'start' }}
-        className='font-bold text-[1rem] md:text-2xl mb-4 md:items-center'
+        className='font-bold text-[1rem] md:text-2xl mb-4 md:items-center sm:items-center'
       />
     </div>
   );
