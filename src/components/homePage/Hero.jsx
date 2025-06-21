@@ -16,7 +16,7 @@ const Hero = () => {
             </span>
           </h1> */}
            <TypingEffect />
-          <p className="text-gray-500 text-[1rem] max-w-md font-medium">
+          <p className="text-gray-500 text-[1rem] max-w-md font-medium ml-15">
              Power Your Business with Global Virtual Phone Numbers
           </p>
 
@@ -24,7 +24,7 @@ const Hero = () => {
 
           <div className="flex flex-row sm:justify-start justify-center gap-4 mt-6">
             <button
-              className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-6 py-2 rounded-full flex items-center transition-colors gap-3"
+              className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-6 py-2 rounded-full flex items-center transition-colors gap-3 ml-15"
               onClick={() => navigate("/sign-in")}
             >
               <LogIn /> Login

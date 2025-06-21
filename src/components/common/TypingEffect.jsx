@@ -14,7 +14,7 @@ const TypingEffect = () => {
         speed={50}
         repeat={Infinity}
         style={{ color: '#e6ac00', textAlign:'start' }}
-        className='font-bold text-[1rem] md:text-2xl mb-4 md:items-center sm:items-center'
+        className='font-bold text-[1rem] md:text-2xl mb-4 md:items-center sm:items-center ml-15'
       />
     </div>
   );
