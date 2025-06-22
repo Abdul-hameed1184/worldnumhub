@@ -38,10 +38,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Optional: Right illustration or image */}
-        {/* <div className="w-full md:w-1/2">
-          <img src="/your-hero-image.png" alt="Hero visual" className="w-full h-auto" />
-        </div> */}
       </div>
     </section>
   );
