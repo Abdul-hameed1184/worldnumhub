@@ -20,10 +20,8 @@ const Sidebar = ({ isOpen, darkMode, toggleSidebar }) => {
           fixed top-0 left-0 h-full overflow-y-auto border-r transition-all duration-300 ease-in-out z-50
           ${darkMode ? "bg-gray-900 text-white border-gray-800" : "bg-white text-gray-900 border-gray-200"}
 
-          // Width changes
           ${isOpen ? "w-64" : "w-16"}
           
-          // Slide out on mobile when closed
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           lg:translate-x-0 lg:static
         `}
