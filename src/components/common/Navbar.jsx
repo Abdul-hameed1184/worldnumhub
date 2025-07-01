@@ -1,9 +1,10 @@
     import { Menu, X } from 'lucide-react';
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
     
     const Navbar = () => {
      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+     const navigate = useNavigate()
 
   return (
     <header className="bg-white shadow px-4 py-3 md:px-27 md:py-10 fixed w-full">
@@ -17,7 +18,7 @@ import { Link } from 'react-router-dom';
         <nav className="hidden md:flex items-center gap-6">
           <Link to={'/sign-in'} className="text-sm text-gray-800 font-medium">Login</Link>
           <Link to={'/sign-up'} className="text-sm text-gray-800 font-medium">Signup</Link>
-          <button className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-4 py-2 rounded-full flex items-center gap-1 transition-colors">
+          <button onClick={()=> navigate('/dashboard')} className="bg-amber-600 hover:bg-amber-500 text-sm font-medium text-white px-4 py-2 rounded-full flex items-center gap-1 transition-colors">
             📞 Contact Us
           </button>
         </nav>
