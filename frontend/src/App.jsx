@@ -32,9 +32,9 @@ function App() {
   }, [checkAuth]);
 
   // Wait for authentication check before rendering routes
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
   const router = createBrowserRouter(
     createRoutesFromElements(
