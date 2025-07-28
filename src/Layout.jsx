@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Moon, Sun, Menu } from "lucide-react";
+import { Moon, Sun, Menu, LogOut } from "lucide-react";
 import Sidebar from "./components/common/SideBar";
 import { Outlet } from "react-router-dom";
 import useThemeStore from "./store/useThemeStore";
+import useAuthStore from "./store/useAuthStore";
 
 const Layout = () => {
   const [isOpen, setIsOpen] = useState(true);
   const { darkMode, toggleTheme } = useThemeStore();
+  const {logout} = useAuthStore();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -35,6 +37,8 @@ const Layout = () => {
             ) : (
               <div></div>
             )}
+            <div className="flex gap-5">
+
 
             <button
               onClick={toggleTheme}
@@ -42,6 +46,10 @@ const Layout = () => {
             >
               {darkMode ? <Sun /> : <Moon />}
             </button>
+            <button onClick={()=> logout()} className="p-2 rounded-md transition-all">
+              <LogOut/>
+            </button>
+              </div>
           </header>
 
           {/* Main content */}

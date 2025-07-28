@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuthStore from "../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,9 @@ const SignUp = () => {
     passwordMismatch: false,
   });
 
+  const { signup, loading, error, user } = useAuthStore();
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -21,7 +26,6 @@ const SignUp = () => {
       [name]: value,
     }));
 
-    // Live check for password mismatch
     if (
       (name === "password" || name === "confirmPassword") &&
       formData.confirmPassword
@@ -36,24 +40,25 @@ const SignUp = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
       setErrors({ passwordMismatch: true });
       return;
     }
-    const payload = {
-        userName: formData.userName,
-        email: formData.email,
-        password: formData.password,
 
+    const success = await signup(formData.userName, formData.email, formData.password);
+    if (success) {
+      navigate("/dashboard");
     }
-
-
-    console.log("Submitted Data:", payload);
-    // Add real API call here
   };
+
+  // Redirect if already logged in
+  if (user) {
+    navigate("/dashboard");
+    return null;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#fafafa] px-4">
@@ -62,8 +67,9 @@ const SignUp = () => {
         <p className="text-sm text-gray-600 mb-6">
           Enter your details to sign up
         </p>
-
+        {error && <div className="text-red-500 text-sm mb-2">{error}</div>}
         <form className="space-y-5" onSubmit={handleSubmit}>
+          {/* ...existing form fields... */}
           <div>
             <label className="block text-sm font-medium mb-1 text-gray-800">
               Username
@@ -78,7 +84,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium mb-1 text-gray-800">
               Email
@@ -93,7 +98,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium mb-1 text-gray-800">
               Password
@@ -110,7 +114,6 @@ const SignUp = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-sm font-medium mb-1 text-gray-800">
               Confirm Password
@@ -136,18 +139,18 @@ const SignUp = () => {
             <button
               type="submit"
               className="w-full border-[#E3A549] border text-orange-400 py-2 rounded-md text-sm hover:bg-[#E3A549] hover:text-white transition-colors font-bold"
+              disabled={loading}
             >
-              SIGN UP
+              {loading ? "Signing Up..." : "SIGN UP"}
             </button>
           </div>
         </form>
-
+        {/* ...existing code... */}
         <div className="flex items-center justify-center my-6">
           <div className="border-t w-full border-gray-200"></div>
           <span className="px-2 text-xs text-gray-500 font-semibold">OR</span>
           <div className="border-t w-full border-gray-200"></div>
         </div>
-
         <div className="text-center text-sm text-gray-600">
           <p>
             Already have an account?{" "}
@@ -162,3 +165,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+// ...existing code...
