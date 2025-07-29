@@ -16,7 +16,7 @@ const Hero = () => {
             </span>
           </h1> */}
            <TypingEffect />
-          <p className="text-gray-500 text-[1rem] max-w-md font-medium ml-15">
+          <p className="text-gray-500 text-[1rem] max-w-md font-medium md:ml-15">
              Power Your Business with Global Virtual Phone Numbers
           </p>
 
