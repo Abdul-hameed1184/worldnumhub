@@ -1,10 +1,11 @@
+// store/useAuthStore.js
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import axios from 'axios';
 
 const API_URL = 'https://worldnumhub-be.onrender.com/api/auth';
 
-export const useAuthStore = create(
+const useAuthStore = create(
   persist(
     (set, get) => ({
       user: null,
@@ -12,8 +13,8 @@ export const useAuthStore = create(
       error: null,
 
       login: async (email, password) => {
-        set({ loading: true, error: null });
         try {
+          set({ loading: true, error: null });
           const res = await axios.post(`${API_URL}/login`, { email, password }, { withCredentials: true });
           set({ user: res.data, loading: false });
           return true;
@@ -24,12 +25,10 @@ export const useAuthStore = create(
       },
 
       signup: async (username, email, password) => {
-        set({ loading: true, error: null });
         try {
+          set({ loading: true, error: null });
           await axios.post(`${API_URL}/signup`, { username, email, password }, { withCredentials: true });
-          await get().login(email, password);
-          set({ loading: false });
-          return true;
+          return await get().login(email, password);
         } catch (err) {
           set({ error: err.response?.data?.message || 'Signup failed', loading: false });
           return false;
@@ -37,8 +36,8 @@ export const useAuthStore = create(
       },
 
       logout: async () => {
-        set({ loading: true, error: null });
         try {
+          set({ loading: true });
           await axios.get(`${API_URL}/logout`, { withCredentials: true });
           set({ user: null, loading: false });
         } catch (err) {
@@ -47,13 +46,13 @@ export const useAuthStore = create(
       },
 
       checkAuth: async () => {
-        set({ loading: true, error: null });
         try {
+          set({ loading: true });
           const res = await axios.get(`${API_URL}/check`, { withCredentials: true });
           set({ user: res.data, loading: false });
           return true;
-        } catch (err) {
-          set({ user: null, error: null, loading: false });
+        } catch {
+          set({ user: null, loading: false });
           return false;
         }
       },

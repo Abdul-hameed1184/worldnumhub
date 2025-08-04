@@ -3,7 +3,8 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import useThemeStore from "../store/useThemeStore";
 import axios from "axios";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
-import { toast } from "react-hot-toast";
+import { payWithFlutterwave } from "../hooks/flutterwave";
+import useAuthStore from "../store/useAuthStore";
 
 const UsaNumbers = () => {
   const { darkMode } = useThemeStore();
@@ -11,71 +12,35 @@ const UsaNumbers = () => {
   const [services, setServices] = useState([]);
   const [txns, setTxns] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [smsMessages, setSmsMessages] = useState([]);
+  const { user } = useAuthStore();
 
-    // 1) Fetch data
+  // 1) Fetch data
   useEffect(() => {
-    const endpoint =
-      tab === "purchase"
-        ? "http://localhost:5000/api/services"
-        : "http://localhost:5000/api/transaction"; // ← fixed endpoint
-    axios.get(endpoint).then((res) => {
-      if (tab === "purchase") setServices(res.data);
-      else setTxns(res.data);
-    });
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null); // Clear previous errors
+
+      const endpoint =
+        tab === "purchase"
+          ? `${import.meta.env.VITE_API_BASE_URL}/api/services`
+          : `${import.meta.env.VITE_API_BASE_URL}/api/services/user/${user._id}`;
+
+      try {
+        const res = await axios.get(endpoint);
+        if (tab === "purchase") setServices(res.data);
+        else setTxns(res.data);
+      } catch (err) {
+        console.error(err);
+        setError("Something went wrong while fetching data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, [tab]);
-
-  // 2) Create a minimal config for the hook
-  const baseConfig = {
-    public_key: import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY,
-  };
-  const handleFlutterwave = useFlutterwave(baseConfig);
-
-  // 3) pay() builds the full config per-purchase
-  const pay = (svc) => {
-    // strip commas and coerce to number
-    const raw = svc["New Price (₦)"];
-    const amount = Number(String(raw).replace(/,/g, ""));
-    if (!amount || isNaN(amount) || amount < 100) {
-      return alert("Invalid amount—must be ≥₦100");
-    }
-
-    handleFlutterwave({
-      ...baseConfig,
-      tx_ref: `FLW_${Date.now()}`,     // must be string
-      amount,                         // numeric, no commas
-      currency: "NGN",
-      payment_options: "card,ussd,mobilemoney",
-      customer: {
-        // optional, but recommended
-        email: "user@example.com",
-        phonenumber: "08012345678",
-        name: "Your Customer",
-      },
-      customizations: {
-        title: svc.Service,
-        description: `Buy ${svc.Service}`,
-      },
-      callback: async (response) => {
-        // record transaction on your server
-        try {
-          await axios.post("http://localhost:5000/api/transaction", {
-            service: svc.Service,
-            amount,
-            tx_ref: response.tx_ref,
-            flw_ref: response.flw_ref,
-          });
-        } catch (err) {
-          console.error("Failed to save txn:", err);
-        }
-        closePaymentModal();
-      },
-      onClose: () => {
-        console.log("Payment modal closed");
-      },
-    });
-  };
-
 
   return (
     <div
@@ -181,7 +146,7 @@ const UsaNumbers = () => {
                         </td>
                         <td className="py-3 px-4">
                           <button
-                            onClick={() => pay(s)}
+                            onClick={() => payWithFlutterwave(s)}
                             className="flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white text-xs px-3 py-2 rounded transition-all"
                           >
                             <ShoppingCart size={14} /> Buy
