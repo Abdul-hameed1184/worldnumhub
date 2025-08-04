@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { ShoppingCart, Loader2 } from "lucide-react";
 import useThemeStore from "../store/useThemeStore";
 import axios from "axios";
-import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 import { payWithFlutterwave } from "../hooks/flutterwave";
 import useAuthStore from "../store/useAuthStore";
 
