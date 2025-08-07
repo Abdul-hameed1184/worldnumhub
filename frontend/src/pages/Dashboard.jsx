@@ -4,11 +4,13 @@ import useThemeStore from "../store/useThemeStore";
 import useAuthStore from "../store/useAuthStore";
 import useTransactionStore from "../store/useTransactionStore";
 import { useWalletStore } from "../store/useWalletStore";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { darkMode } = useThemeStore();
   const { user } = useAuthStore();
   const {balance, fetchBalance} = useWalletStore()
+  const navigate = useNavigate()
 
 
 
@@ -34,7 +36,7 @@ const Dashboard = () => {
         <div className="space-y-12">
           <p className="text-white font-medium text-lg">Available Balance :</p>
           <div className="flex space-x-3">
-            <button className="w-10 h-10 rounded bg-opacity-20 flex items-center justify-center text-black text-xl border border-white hover:bg-white hover:text-black transition-colors">
+            <button className="w-10 h-10 rounded bg-opacity-20 flex items-center justify-center text-black text-xl border border-white hover:bg-white hover:text-black transition-colors" onClick={()=> navigate('/fund-wallet')}>
               <Plus size={16} />
             </button>
             <button className="w-10 h-10 rounded bg-opacity-20 flex items-center justify-center text-black text-xl border border-white hover:bg-white hover:text-black transition-colors">
