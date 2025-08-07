@@ -24,6 +24,7 @@ import NumbersHistory from "./pages/NumbersHistory";
 import Promocode from "./pages/PromoCode";
 import BankTransfer from "./pages/BankTransfer";
 import RechargeMethods from "./pages/RechargeMethods";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuthStore();
@@ -57,6 +58,7 @@ function App() {
           <Route path="/recharge" element={<ProtectedRoute><RechargeMethods /></ProtectedRoute>} />
           <Route path="/recharge/bank" element={<ProtectedRoute><BankTransfer /></ProtectedRoute>} />
           <Route path="/recharge/promo" element={<ProtectedRoute><Promocode /></ProtectedRoute>} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
         </Route>
       </>
     )
