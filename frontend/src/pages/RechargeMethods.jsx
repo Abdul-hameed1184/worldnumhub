@@ -21,7 +21,7 @@ const RechargeMethods = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/services/fund-wallet", {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/services/fund-wallet`, {
         userId: user._id,
         amount,
         email: user.email,
