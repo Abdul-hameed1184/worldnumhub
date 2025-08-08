@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user?._id) {
-      fetchTransactions(user._id); // Make sure store supports this param
+      fetchTransactions(user._id); 
       fetchBalance(user._id);
     }
   }, [user?._id, fetchTransactions, fetchBalance]);
