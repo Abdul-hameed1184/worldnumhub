@@ -27,7 +27,7 @@ const RechargeMethods = () => {
         email: user.email,
       });
 
-      window.location.href = res.data.link; // Redirect to Flutterwave payment
+      window.location.href = res.data.link; 
     } catch (error) {
       console.error("❌ Payment Error:", error);
       toast.error("Failed to initiate payment");
